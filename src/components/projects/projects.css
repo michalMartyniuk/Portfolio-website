@@ -1,0 +1,56 @@
+.projects {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: url('/images/green.jpg');
+  color: white;
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  align-items: center;
+  z-index: 9;
+  opacity: 0;
+}
+
+.projectsStateAnim {
+  animation: projectsStateAnimation 2s forwards;
+}
+
+/* .projectsStateFalseAnim {
+  animation: projectsStateFalseAnimation 4s forwards;
+} */
+
+@keyframes projectsStateAnimation {
+  0% { z-index: 11; }
+  100% { 
+    z-index: 11;
+    opacity: 1; 
+  }
+}
+
+/* @keyframes projectsStateFalseAnimation {
+  100% {
+    opacity: 0;
+  }
+} */
+
+.projects h1 {
+  margin: 2rem auto;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.item {
+  width: 70%;
+  margin: 1rem;
+}
+
+.text {
+  font-size: 2rem;
+}

@@ -1,0 +1,11 @@
+.Input {
+  display: block;
+  outline: none;
+  width: 100%;
+  padding: 1rem;
+}
+
+.inputElement {
+  width: 100%;
+  padding: .5rem;
+}

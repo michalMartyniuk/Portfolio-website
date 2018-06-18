@@ -1,0 +1,15 @@
+.contact {
+  background: url('/images/bridge.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: 7rem 7rem;;
+}
+
