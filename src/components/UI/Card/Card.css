@@ -8,13 +8,7 @@
   padding: 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.493);
   border-radius: 1rem;
-  /* opacity: .5; */
   transition: all .2s;
-
-}
-
-.info:hover {
-  /* opacity: 1; */
 }
 
 .infoTitle {
@@ -34,13 +28,7 @@
   padding: 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.493);
   border-radius: 1rem;
-  opacity: .5;
   transition: all .2s;
-
-}
-
-.projects:hover {
-  opacity: 1;
 }
 
 .projectsTitle {
@@ -61,12 +49,6 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.493);
   border-radius: 1rem;
   transition: all .2s;
-  opacity: .5;
-
-}
-
-.contact:hover {
-  opacity: 1;
 }
 
 .contactTitle {

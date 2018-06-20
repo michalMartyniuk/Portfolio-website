@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    
     const elements = {
       header: document.querySelector('#header'),
       info: document.querySelector('#info'),
@@ -50,21 +51,6 @@ class App extends Component {
   linkHandler = (e, page) => {
     e.preventDefault();
     this.setPage(page);
-    // SMOOTH SCROLL    
-    // const element = document.querySelector('#' + name);
-    // const offset = element.offsetTop;
-    // let position = 0;
-    // let speed = 20;
-    // const smoothScroll = setInterval( () =>{
-    //   if(position < offset) {
-    //     if(position + speed > offset) {
-    //       speed = offset - position;          
-    //     } 
-    //     position += speed;
-    //     window.scroll(0, position);
-    //   }
-    //   else clearInterval(smoothScroll);
-    // }, 1);
   }
 
   setPage = (page) => {
@@ -77,7 +63,7 @@ class App extends Component {
       else {
         this.setState({
           [element]: { ...this.state[element], state: false }
-        }, () => console.log(this.state))
+        })
       }
     })
   }
