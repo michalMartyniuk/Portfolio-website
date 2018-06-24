@@ -1,0 +1,54 @@
+.frontEnd {}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  padding-left: 1rem;
+  margin-top: 1.2rem;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  box-shadow: 0px 1px 5px 0px;
+  padding: 1rem;
+}
+
+.listItem i {
+  font-size: 7rem;
+}
+
+.text {
+  margin: auto;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.html {
+  color: #e44b21;
+}
+.css {
+  color: #3c99dc;
+}
+.react {
+  color: #55d8ff;
+}
+.js {
+  color: #f1db4f;
+}
+
+.angular {
+  color: #e23237;
+}
+
+.sass {
+  color: #cf639a;
+}
+
+.npm {
+  color: #cb3837;
+}

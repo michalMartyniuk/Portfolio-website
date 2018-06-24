@@ -1,50 +1,32 @@
 import React, { Component } from 'react';
-import './App.css';
+import styles from './App.css';
 import Header from './components/header/header';
-import Info from './components/info/info';
+import Profile from './components/profile/profile';
 import Card from './components/UI/Card/Card';
 import Projects from './components/projects/projects';
 import Contact from './components/contact/contact';
+import Backdrop from './components/UI/Backdrop/Backdrop';
+import Modal from './components/UI/Modal/Modal';
+import Particles from './components/UI/particles/particles';
 
 class App extends Component {
   
   state = {
+    modalState: false,
+    initialAnimation: true,
     header: { state: true, animation: false },
-    info: { state: false, animation: false },
+    profile: { state: false, animation: false },
     projects: { state: false, animation: false },
     contact: { state: false, animation: false }
   }
 
-  componentDidMount() {
-    
-    const elements = {
-      header: document.querySelector('#header'),
-      info: document.querySelector('#info'),
-      projects: document.querySelector('#projects'),
-      contact: document.querySelector('#contact')
-    }
-    
-    window.onscroll = () => {
-      for(let element of Object.keys(elements)) {
-        if(
-          window.pageYOffset >= elements[element].offsetTop - window.innerHeight + 100 &&
-          window.pageYOffset <= elements[element].offsetTop + elements[element].offsetHeight &&
-          this.state[element].animation === false
-        ) {
-          this.setState({
-            [element]: { ...this.state[element], animation: true }  
-          });
-        }
-        else if (
-          window.pageYOffset <= elements[element].offsetTop - window.innerHeight + 100 &&
-          // window.pageYOffset >= (elements[element].offsetTop + elements[element].offsetHeight) - window.innerHeight / 2) &&
-          this.state[element].animation === true
-        ) {
-          this.setState({
-            [element]: { ...this.state[element], animation: false }
-          });
-        }
-      }
+  componentDidMount() {}
+
+  componentDidUpdate() {
+    if(this.state.initialAnimation === true) {
+      this.setState({
+        initialAnimation: false
+      })
     }
   }
 
@@ -58,7 +40,7 @@ class App extends Component {
       if(page === element) {
         this.setState({
           [element]: { ...this.state[element], state: true }
-        })
+        }, () => console.log(this.state.profile.state))
       }
       else {
         this.setState({
@@ -68,13 +50,37 @@ class App extends Component {
     })
   }
 
+  modalSet = (content) => {
+    this.setState({
+      modalState: true,
+      modalContent: content
+    })
+  }
+
+  modalSetState = (state) => {
+    this.setState({
+      modalState: state,
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <Header linkHandler={this.linkHandler} animation={this.state.header.animation}/>
-        <Info setPage={this.setPage} state={this.state.info.state} animation={this.state.info.animation}/>
+      <div className={styles.App}>
+        <Particles />
+        <Backdrop show={this.state.modalState === true} click={() => this.modalSetState(false)} />
+        <Modal show={this.state.modalState === true}>
+          {this.state.modalContent}
+        </Modal>
+        {/* {this.state.initialAnimation === true ? <div className={styles.initialAnimation}></div> : null } */}
+        <Header setPage={this.setPage} state={this.state.header.state} linkHandler={this.linkHandler} animation={this.state.header.animation}/>
+        <Profile 
+          modalState={this.state.modalState} 
+          modalSet={this.modalSet} 
+          setPage={this.setPage} 
+          state={this.state.profile.state} 
+          animation={this.state.profile.animation}
+        />
         <Projects setPage={this.setPage} state={this.state.projects.state} animation={this.state.projects.animation}/>
-        {/* <Contact animation={this.state.contact.animation}/> */}
       </div>
     );
   }

@@ -1,0 +1,38 @@
+.wykształcenie {}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0px 1px 5px 0px;
+}
+
+.iconUniversity {
+  font-size: 5rem;
+  margin: 1rem;
+  margin-right: 2.2rem;
+}
+
+.iconLanguage {
+  font-size: 5rem;
+  margin: 1rem;
+  margin-right: 2rem;
+}
+
+.school {
+  display: flex;
+}
+
+.title {
+  font-size: 2.4rem;
+  font-weight: 900;
+}
+
+.description {
+  font-size: 2.4rem;
+}
+
+.modalText {
+  font-size: 2.4rem;
+}

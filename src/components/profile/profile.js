@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import styles from './projects.css';
+import styles from './profile.css';
 import Card from '../UI/Card/Card';
 import ArrowUp from '../UI/arrows/arrow-up/arrow-up';
 import ArrowDown from '../UI/arrows/arrow-down/arrow-down';
+import FrontEnd from '../info/front-end/front-end';
+import Wykształcenie from '../info/wykształcenie/wykształcenie';
+import About from '../info/about/about';
 import { CSSTransition } from 'react-transition-group';
+import Particles from '../UI/particles/particles';
 
-class Projects extends Component {
+class Profile extends Component {
 
   state = {
     keyboard: false,
@@ -51,8 +55,9 @@ class Projects extends Component {
       })
     }
   }
-
+  
   keyDownHandler = (e) => {
+    console.log(e.key);
     switch(e.key) {
       case 'ArrowLeft':
         this.rotateLeft();
@@ -61,15 +66,14 @@ class Projects extends Component {
         this.rotateRight();
         break;
       case 'ArrowUp':
-        this.props.setPage('projects');
+        this.props.setPage('header');
         break;
       case 'ArrowDown':
-        this.props.setPage('header');
+        this.props.setPage('projects');
         break;
       default: break;
     }
   }
-
 
   rotateLeft = () => {
     Object.entries(this.state).map( element => {
@@ -203,12 +207,13 @@ class Projects extends Component {
         in={this.props.state}
         timeout={timeouts}
         classNames={{
-          enterActive: styles.projectsStateTrueAnim,
+          enterActive: styles.profileStateTrueAnim,
         }}
       >
-        <div className={[styles.projects].join(' ')} id="projects">
-          <ArrowUp setPage={() => this.props.setPage('profile')} text="Back" />
-          <ArrowDown setPage={() => this.props.setPage('header')} text="Back to top" />
+        <div className={styles.profile} id="profile" >
+          <Particles />        
+          <ArrowUp setPage={() => this.props.setPage('header')} text="Back" />
+          {/* <ArrowDown setPage={() => this.props.setPage('projects')} text="Next" /> */}
           <i 
             className={["fas fa-angle-double-right", styles.arrowRight].join(' ')}
             onClick={this.rotateRight}
@@ -227,9 +232,7 @@ class Projects extends Component {
           ].join(' ')}
             onClick={() => this.animClickHandler('one')}
           >
-            <Card title="One" titleclass="projectsTitle" cardclass="projects">
-              <p className={styles.text}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo, quasi. Quia aperiam nihil tempore laboriosam. Atque ut dolorem repudiandae rem tempora fuga minus placeat ipsa qui facilis cumque distinctio deserunt reiciendis fugiat exercitationem optio, assumenda quidem, nulla cum odio. Possimus!</p>
-            </Card>
+            <FrontEnd />
           </div>
           <div className={[
             styles.item,
@@ -240,9 +243,7 @@ class Projects extends Component {
           ].join(' ')}
             onClick={() => this.animClickHandler('two')}
           >
-            <Card title="Two" titleclass="projectsTitle" cardclass="projects">
-              <p className={styles.text}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo, quasi. Quia aperiam nihil tempore laboriosam. Atque ut dolorem repudiandae rem tempora fuga minus placeat ipsa qui facilis cumque distinctio deserunt reiciendis fugiat exercitationem optio, assumenda quidem, nulla cum odio. Possimus!</p>
-            </Card>
+            <Wykształcenie modalState={this.props.modalState} modalSet={this.props.modalSet} />
           </div>
           <div className={[
             styles.item,
@@ -253,14 +254,12 @@ class Projects extends Component {
           ].join(' ')}
             onClick={() => this.animClickHandler('three')}
           >
-            <Card title="Three" titleclass="projectsTitle" cardclass="projects">
-              <p className={styles.text}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo, quasi. Quia aperiam nihil tempore laboriosam. Atque ut dolorem repudiandae rem tempora fuga minus placeat ipsa qui facilis cumque distinctio deserunt reiciendis fugiat exercitationem optio, assumenda quidem, nulla cum odio. Possimus!</p>
-            </Card>
+            <About />
           </div>
         </div>
       </CSSTransition>
     )
-  } 
+  }
 }
   
-export default Projects;
+export default Profile;
